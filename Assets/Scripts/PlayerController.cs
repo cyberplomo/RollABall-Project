@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed = 0;
 	public Text countText;
+	public Text winText;
 	private Rigidbody rb;
 	private int count;
 	private float movementX;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 		count = 0;
 		SetCountText();
+		winText.text = "";
     }
 
   	private void OnMove(InputValue movementValue)
@@ -49,6 +51,11 @@ public class PlayerController : MonoBehaviour
 	void SetCountText ()
 	{
 		countText.text = "Count: " + count.ToString();
+		if (count >= 8)
+		{
+			winText.text = "You win!";		
+		}
+		
 	}
 	
 }
